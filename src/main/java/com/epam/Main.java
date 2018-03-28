@@ -10,5 +10,6 @@ public class Main {
         testng.setTestClasses(new Class[] { WindowTest.class });
         testng.addListener(tla);
         testng.run();*/
+        System.out.println("testing");
     }
 }
