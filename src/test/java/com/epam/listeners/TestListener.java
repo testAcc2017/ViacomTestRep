@@ -1,4 +1,4 @@
-package com.epam.Listeners;
+package com.epam.listeners;
 
 import org.testng.ITestContext;
 import org.testng.ITestListener;

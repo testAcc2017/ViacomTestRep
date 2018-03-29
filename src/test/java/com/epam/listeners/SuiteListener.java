@@ -1,4 +1,4 @@
-package com.epam.Listeners;
+package com.epam.listeners;
 
 import org.testng.ISuite;
 import org.testng.ISuiteListener;
