@@ -13,11 +13,19 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class DriverFactory {
 
-    private WebDriver driver;
+    private static WebDriver driver;
     private static final String HUB_URL = "http://localhost:4444/wd/hub";
     private static final String APPIUM_HUB_URL = "http://localhost:4723/wd/hub";
 
-    public WebDriver getWebdriver(String browser, String platform) throws MalformedURLException {
+    private DriverFactory(){}
+
+    public static WebDriver getWebdriver (String browser, String platform) throws MalformedURLException {
+        if (driver == null)
+            return driver = new DriverFactory().webdriverPlatformSelection(browser, platform);
+        else return driver;
+    }
+
+    private WebDriver webdriverPlatformSelection(String browser, String platform) throws MalformedURLException {
         if ("android".equalsIgnoreCase(platform)) {
             driver = selectAndroidDriver(browser, platform);
         } else {

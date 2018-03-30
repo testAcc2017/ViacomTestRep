@@ -1,5 +1,6 @@
 package com.epam.onliner;
 
+import com.epam.listeners.RetryAnalyzer;
 import com.epam.utils.DriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -12,27 +13,36 @@ import java.net.MalformedURLException;
 public class OnlinerTest {
 
     private static final String WEB_URL = "https://www.onliner.by/";
+    private static int number = 0;
     private WebDriver driver;
-    private int number = 0;
+
 
     @BeforeClass
     @Parameters({ "browser", "platform" })
     public void driverInit(String browser, String platform) throws MalformedURLException {
-        DriverFactory driverFactory = new DriverFactory();
-        driver = driverFactory.getWebdriver(browser, platform);
+        driver = DriverFactory.getWebdriver(browser, platform);
         driver.get(WEB_URL);
     }
 
-    @Test
-    public void titleCheck(){
+    /*@Test
+    public void titleCheckTest(){
         Assert.assertTrue(driver.getTitle().equalsIgnoreCase("onliner.by"));
-    }
+    }*/
 
     @Test
+    public void modelSearch(){
+        MainPage page = new MainPage(driver);
+        AutoSearch autoSearchPage = page.autoSearchButtonClick();
+        autoSearchPage.chooseAutoFromSearchList("audi");
+
+    }
+
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     public void retryFailureMethodTest() {
         System.out.println("this is  " + number + " try");
-        Assert.assertTrue(false);
         number++;
+        Assert.assertEquals(number, 2, "Number is not matched");
+
     }
 
     @AfterClass
