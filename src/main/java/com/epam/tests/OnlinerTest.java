@@ -1,6 +1,7 @@
 package com.epam.tests;
 
 import com.epam.driver.DriverFactory;
+import com.epam.driver.ThreadLocalDriver;
 import com.epam.listeners.RetryAnalyzer;
 import com.epam.pages.AutoSearch;
 import com.epam.pages.MainPage;
@@ -23,6 +24,8 @@ public class OnlinerTest {
     @Parameters({ "browser", "platform" })
     public void driverInit(String browser, String platform) throws MalformedURLException {
         driver = DriverFactory.getWebdriver(browser, platform);
+        ThreadLocalDriver.setWebDriver(driver);
+        driver = ThreadLocalDriver.getWebDriver();
         driver.get(WEB_URL);
     }
 
