@@ -23,9 +23,7 @@ public class OnlinerTest {
     @BeforeClass
     @Parameters({ "browser", "platform" })
     public void driverInit(String browser, String platform) throws MalformedURLException {
-        driver = DriverFactory.getWebdriver(browser, platform);
-        ThreadLocalDriver.setWebDriver(driver);
-        driver = ThreadLocalDriver.getWebDriver();
+        driver = ThreadLocalDriver.getWebDriver(browser, platform);
         driver.get(WEB_URL);
     }
 

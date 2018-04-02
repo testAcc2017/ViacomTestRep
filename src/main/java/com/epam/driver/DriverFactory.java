@@ -19,10 +19,8 @@ public class DriverFactory {
 
     private DriverFactory(){}
 
-    public static WebDriver getWebdriver (String browser, String platform) throws MalformedURLException {
-        if (driver == null) {
-            driver  =new DriverFactory().webdriverPlatformSelection(browser, platform);
-        }
+    protected static WebDriver getWebdriver (String browser, String platform) throws MalformedURLException {
+        driver  = new DriverFactory().webdriverPlatformSelection(browser, platform);
         return driver;
     }
 
