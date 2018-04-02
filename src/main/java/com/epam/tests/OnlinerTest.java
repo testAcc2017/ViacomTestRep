@@ -1,7 +1,9 @@
-package com.epam.onliner;
+package com.epam.tests;
 
+import com.epam.driver.DriverFactory;
 import com.epam.listeners.RetryAnalyzer;
-import com.epam.utils.DriverFactory;
+import com.epam.pages.AutoSearch;
+import com.epam.pages.MainPage;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;

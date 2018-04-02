@@ -1,23 +1,20 @@
-package com.epam.onliner;
+package com.epam.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class MainPage {
-    private WebDriver driver;
+public class MainPage extends AbstractPage{
 
     @FindBy (xpath = "//a[@href = 'https://ab.onliner.by' and @class = 'b-main-navigation__link']/span")
     private WebElement autosearch;
 
     public MainPage(WebDriver driver){
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
     public AutoSearch autoSearchButtonClick(){
         autosearch.click();
-        return new AutoSearch(driver);
+        return new AutoSearch(getDriver());
     }
 }

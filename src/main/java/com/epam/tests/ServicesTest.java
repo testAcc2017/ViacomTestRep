@@ -1,4 +1,4 @@
-package com.epam;
+package com.epam.tests;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -6,7 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class WindowTest {
+public class ServicesTest {
 
     @Test(groups = {"smokeTest"})
     public void responseCodeTest() {
@@ -25,13 +25,13 @@ public class WindowTest {
 
     @Test(groups = {"trueGroup"})
     @Parameters("myName")
-    public void alwaysPassTest(String name) {
+    public void NameTest(String name) {
         Assert.assertEquals(name, "Victor", "The name is not matched");
     }
 
     @Test(groups = {"trueGroup"})
     @Parameters("mySurName")
-    public void anotherSuccessTest(String surName) {
+    public void SurnameTest(String surName) {
         Assert.assertEquals(surName, "Ivanov", "The surname is not matched");
     }
 }
