@@ -1,5 +1,6 @@
 package com.epam.runner;
 
+import org.apache.commons.cli.ParseException;
 import org.testng.TestNG;
 import org.testng.xml.SuiteXmlParser;
 import org.testng.xml.XmlSuite;
@@ -15,8 +16,12 @@ public class Main {
         SuiteXmlParser parser = new SuiteXmlParser();
         XmlSuite suite = parser.parse(file, new FileInputStream(file), true);
 
-        List<XmlSuite> suitesList= new ArrayList<>();
-        suitesList.add(suite);
+        List<XmlSuite> suitesList = new ArrayList<>();
+        try {
+            suitesList.add(CliParser.suiteManage(suite, args));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         TestNG tng = new TestNG();
         tng.setXmlSuites(suitesList);
         tng.run();
