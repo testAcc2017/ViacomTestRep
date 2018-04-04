@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 public class AutoSearch extends AbstractPage{
 
     @FindBy(xpath = "//select[@class ='manufacture']")
-    private WebElement autoModelDropDownButton;
+    public WebElement autoModelDropDownButton;
 
 
     public AutoSearch(WebDriver driver){

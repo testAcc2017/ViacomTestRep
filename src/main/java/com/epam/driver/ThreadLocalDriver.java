@@ -10,7 +10,6 @@ public class ThreadLocalDriver {
     public static WebDriver getWebDriver(String browser, String platform) throws MalformedURLException {
         setWebDriver(browser, platform);
         return webDriver.get();
-
     }
 
     private static void setWebDriver(String browser, String platform) throws MalformedURLException {
@@ -18,6 +17,5 @@ public class ThreadLocalDriver {
             webDriver.set(DriverFactory.getWebdriver(browser, platform));
         }
     }
-
 
 }
