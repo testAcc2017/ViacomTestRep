@@ -18,4 +18,10 @@ public class ThreadLocalDriver {
         }
     }
 
+    public static void threadQuit(){
+        if (webDriver.get() != null) {
+            webDriver.remove();
+        }
+    }
+
 }

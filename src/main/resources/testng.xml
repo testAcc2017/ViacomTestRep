@@ -1,9 +1,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite" parallel="methods" thread-count="3">
     <listeners>
-        <!--<listener class-name="TestListener"/>
-        <listener class-name="SuiteListener"/>
-        <listener class-name="AnnotationTransformerClass"/>-->
+        <listener class-name="com.epam.listeners.TestListener"/>
+        <listener class-name="com.epam.listeners.SuiteListener"/>
+        <listener class-name="com.epam.listeners.AnnotationTransformerClass"/>
     </listeners>
     <!--<test name="Test">
         <groups>

@@ -1,5 +1,6 @@
 package com.epam.listeners;
 
+import com.epam.runner.CliParser;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 
@@ -11,10 +12,11 @@ public class RetryAnalyzer implements IRetryAnalyzer {
 
     @Override
     public boolean retry(ITestResult iTestResult) {
-        if(counter < retryLimit)
-        {
-            counter++;
-            return true;
+        if (CliParser.isRetry()) {
+            if (counter < retryLimit) {
+                counter++;
+                return true;
+            }
         }
         return false;
     }

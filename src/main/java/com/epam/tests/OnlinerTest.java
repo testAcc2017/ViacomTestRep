@@ -5,6 +5,7 @@ import com.epam.driver.ThreadLocalDriver;
 import com.epam.listeners.RetryAnalyzer;
 import com.epam.pages.AutoSearch;
 import com.epam.pages.MainPage;
+import com.epam.runner.CliParser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -29,13 +30,20 @@ public class OnlinerTest {
         driver.get(WEB_URL);
         page = new MainPage(driver);
     }
-
-    /*@Test
+    /*@BeforeClass
+    public void driverInit() throws MalformedURLException {
+        String browser = CliParser.getBrowser();
+        String platform = CliParser.getPlatform();
+        driver = ThreadLocalDriver.getWebDriver(browser, platform);
+        driver.get(WEB_URL);
+        page = new MainPage(driver);
+    }*/
+    @Test
     public void modelSearch(){
         MainPage page = new MainPage(driver);
         AutoSearch autoSearchPage = page.autoSearchButtonClick();
         autoSearchPage.chooseAutoFromSearchList("audi");
-    }*/
+    }
 
     @Test(retryAnalyzer = RetryAnalyzer.class)
     public void retryFailureMethodTest() {
@@ -89,6 +97,7 @@ public class OnlinerTest {
     public void terminateDriver() {
         driver.quit();
         driver = null;
+        ThreadLocalDriver.threadQuit();
         page = null;
     }
 }
